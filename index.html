@@ -94,12 +94,36 @@
             text-align: center;
             margin: 15px 0;
         }
-        .wifi-box .ssid { font-size: 1.3em; font-weight: bold; color: #4facfe; }
+        .wifi-box .label { color: #888; font-size: 0.9em; margin-bottom: 5px; }
+        .wifi-box .value { font-size: 1.3em; font-weight: bold; color: #4facfe; }
         .wifi-box .password { font-size: 1.5em; font-weight: bold; color: #2ed573; letter-spacing: 2px; }
+        details { margin: 10px 0; }
+        summary {
+            cursor: pointer;
+            padding: 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            font-weight: 600;
+            color: #4facfe;
+        }
+        summary:hover { background: rgba(255,255,255,0.1); }
+        .week-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .week-label { min-width: 80px; font-weight: 600; color: #4facfe; }
+        .week-dates { flex: 1; color: #aaa; }
+        .week-person { min-width: 100px; }
+        .week-person select {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #e0e0e0;
+            padding: 6px 10px;
+            border-radius: 6px;
+            width: 100%;
+        }
         @media (max-width: 600px) {
             h1 { font-size: 1.8em; }
             .section { padding: 15px; }
             th, td { padding: 8px 10px; font-size: 0.9em; }
+            .week-row { flex-wrap: wrap; }
         }
     </style>
 </head>
@@ -114,10 +138,10 @@
             <div class="warning">
                 <strong>📅 Rent Due:</strong> <span class="highlight">7th of every month</span><br>
                 <strong>📧 Bills:</strong> Arrive on the <span class="highlight">10th of every month</span> via email (auto). Always include the <span class="highlight">reference number</span> when paying.<br>
-                <strong>💡 Estimated Monthly Bills:</strong> ~<span class="highlight">$890</span> total (electricity + gas + WiFi)
+                <strong>💡 Estimated Monthly Bills:</strong> ~<span class="highlight">$90</span> total (electricity + gas + WiFi)
             </div>
             <div class="warning">
-                <strong>⚠️ Payment Rule:</strong> Everyone sends their share by the <span class="highlight">28th of each month</span>. No chasing.
+                <strong>⚠️ Payment:</strong> If you can't pay by the due date, no stress — just give a <span class="highlight">heads-up</span> and let us know how long you need. Communication is key! 🤝
             </div>
         </div>
 
@@ -125,11 +149,14 @@
         <div class="section">
             <h2>📶 WiFi</h2>
             <div class="wifi-box">
-                <p>Network Name (SSID)</p>
-                <p class="ssid">Optus_F8A9F2</p>
+                <p class="label">Network Name (SSID)</p>
+                <p class="value">NOKIA-30ED</p>
                 <br>
-                <p>Password</p>
-                <p class="password">N3tw0rk86!</p>
+                <p class="label">Type</p>
+                <p class="value">WPA</p>
+                <br>
+                <p class="label">Password</p>
+                <p class="password">43acc26374</p>
             </div>
         </div>
 
@@ -137,33 +164,63 @@
         <div class="section">
             <h2>🧹 Cleaning Roster</h2>
             <p>One person per week does ALL cleaning on their day off.</p>
-            <table>
-                <tr>
-                    <th>Week</th>
-                    <th>Person</th>
-                    <th>Day Off</th>
-                </tr>
-                <tr>
-                    <td><span class="tag tag-blue">Week 1</span></td>
-                    <td>Aabi</td>
-                    <td>Monday</td>
-                </tr>
-                <tr>
-                    <td><span class="tag tag-blue">Week 2</span></td>
-                    <td>Simran</td>
-                    <td>TBD</td>
-                </tr>
-                <tr>
-                    <td><span class="tag tag-blue">Week 3</span></td>
-                    <td>Deepawali</td>
-                    <td>TBD</td>
-                </tr>
-                <tr>
-                    <td><span class="tag tag-blue">Week 4</span></td>
-                    <td>Bijay</td>
-                    <td>TBD</td>
-                </tr>
-            </table>
+
+            <h3>📅 Upcoming Weeks</h3>
+            <details open>
+                <summary>Show Cleaning Schedule (tap to expand/collapse)</summary>
+                <div style="margin-top: 15px;">
+                    <div class="week-row">
+                        <span class="week-label">Week 1</span>
+                        <span class="week-dates">May 26 – Jun 1</span>
+                        <div class="week-person">
+                            <select><option value="">Select person...</option><option>Aabi</option><option>Simran</option><option>Deepawali</option><option>Bijay</option></select>
+                        </div>
+                    </div>
+                    <div class="week-row">
+                        <span class="week-label">Week 2</span>
+                        <span class="week-dates">Jun 2 – Jun 8</span>
+                        <div class="week-person">
+                            <select><option value="">Select person...</option><option>Aabi</option><option>Simran</option><option>Deepawali</option><option>Bijay</option></select>
+                        </div>
+                    </div>
+                    <div class="week-row">
+                        <span class="week-label">Week 3</span>
+                        <span class="week-dates">Jun 9 – Jun 15</span>
+                        <div class="week-person">
+                            <select><option value="">Select person...</option><option>Aabi</option><option>Simran</option><option>Deepawali</option><option>Bijay</option></select>
+                        </div>
+                    </div>
+                    <div class="week-row">
+                        <span class="week-label">Week 4</span>
+                        <span class="week-dates">Jun 16 – Jun 22</span>
+                        <div class="week-person">
+                            <select><option value="">Select person...</option><option>Aabi</option><option>Simran</option><option>Deepawali</option><option>Bijay</option></select>
+                        </div>
+                    </div>
+                    <div class="week-row">
+                        <span class="week-label">Week 5</span>
+                        <span class="week-dates">Jun 23 – Jun 29</span>
+                        <div class="week-person">
+                            <select><option value="">Select person...</option><option>Aabi</option><option>Simran</option><option>Deepawali</option><option>Bijay</option></select>
+                        </div>
+                    </div>
+                    <div class="week-row">
+                        <span class="week-label">Week 6</span>
+                        <span class="week-dates">Jun 30 – Jul 6</span>
+                        <div class="week-person">
+                            <select><option value="">Select person...</option><option>Aabi</option><option>Simran</option><option>Deepawali</option><option>Bijay</option></select>
+                        </div>
+                    </div>
+                    <div class="week-row">
+                        <span class="week-label">Week 7</span>
+                        <span class="week-dates">Jul 7 – Jul 13</span>
+                        <div class="week-person">
+                            <select><option value="">Select person...</option><option>Aabi</option><option>Simran</option><option>Deepawali</option><option>Bijay</option></select>
+                        </div>
+                    </div>
+                </div>
+            </details>
+            <p style="margin-top: 10px; color: #888; font-size: 0.9em;">📋 Your buddy will review this during the weekly review and update the roster.</p>
 
             <h3>🧹 Vacuuming</h3>
             <ul>
@@ -210,10 +267,9 @@
         <div class="section">
             <h2>📋 Daily Rules (Everyone, Every Day)</h2>
             <ul>
-                <li>🍳 Wash your own dishes — don't leave in sink overnight</li>
+                <li>🍳 Wash your own dishes — don't leave them overnight. If you're extremely busy, it's fine to take a break, but make sure to clean them thoroughly later. Always try to keep them clean.</li>
                 <li>🧹 Wipe bench after cooking, put stuff back</li>
                 <li>🚽 Flush every time, wipe seat if splash, replace TP when empty</li>
-                <li>🛁 Hang towel, don't leave hair in drain</li>
                 <li>🗑️ If bin is full, take it out</li>
                 <li>👥 Guest mess = your mess</li>
                 <li>📦 Put things back where you found them</li>
@@ -275,7 +331,7 @@
             <ul>
                 <li>✅ Communicate — if something's bothering you, say it</li>
                 <li>✅ Clean up after yourself — baseline every day</li>
-                <li>✅ Pay bills on time — no chasing</li>
+                <li>✅ Pay bills on time or give a heads-up if you can't</li>
                 <li>✅ Respect shared spaces</li>
                 <li>✅ Give notice for guests</li>
                 <li>✅ Contribute to house supplies</li>
