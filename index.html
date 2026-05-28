@@ -119,6 +119,31 @@
             border-radius: 6px;
             width: 100%;
         }
+        .week-day select:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .who-am-i {
+            background: rgba(79, 172, 254, 0.1);
+            border: 2px solid #4facfe;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .who-am-i label { font-weight: 600; color: #4facfe; white-space: nowrap; }
+        .who-am-i select {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #e0e0e0;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        .who-am-i .hint { color: #888; font-size: 0.85em; width: 100%; }
         @media (max-width: 600px) {
             h1 { font-size: 1.8em; }
             .section { padding: 15px; }
@@ -165,47 +190,59 @@
             <h2>🧹 Cleaning Roster</h2>
             <p>One person per week does ALL cleaning on their day off.</p>
 
+            <div class="who-am-i">
+                <label for="whoami">👤 I am:</label>
+                <select id="whoami" onchange="updateLocks()">
+                    <option value="">Select yourself...</option>
+                    <option value="Aabi">Aabi</option>
+                    <option value="Simran">Simran</option>
+                    <option value="Deepawali">Deepawali</option>
+                    <option value="Bijay">Bijay</option>
+                </select>
+                <span class="hint">Select your name to edit only YOUR cleaning day. Others stay locked.</span>
+            </div>
+
             <h3>📅 Upcoming Weeks</h3>
             <details open>
                 <summary>Show Cleaning Schedule (tap to expand/collapse)</summary>
                 <div style="margin-top: 15px;">
-                    <div class="week-row">
+                    <div class="week-row" data-person="Aabi">
                         <span class="week-label">Week 1</span>
                         <span class="week-dates">May 26 – Jun 1</span>
                         <span class="week-person"><strong>Aabi</strong></span>
                         <div class="week-day"><select><option value="">Select day...</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
                     </div>
-                    <div class="week-row">
+                    <div class="week-row" data-person="Simran">
                         <span class="week-label">Week 2</span>
                         <span class="week-dates">Jun 2 – Jun 8</span>
                         <span class="week-person"><strong>Simran</strong></span>
                         <div class="week-day"><select><option value="">Select day...</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
                     </div>
-                    <div class="week-row">
+                    <div class="week-row" data-person="Deepawali">
                         <span class="week-label">Week 3</span>
                         <span class="week-dates">Jun 9 – Jun 15</span>
                         <span class="week-person"><strong>Deepawali</strong></span>
                         <div class="week-day"><select><option value="">Select day...</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
                     </div>
-                    <div class="week-row">
+                    <div class="week-row" data-person="Bijay">
                         <span class="week-label">Week 4</span>
                         <span class="week-dates">Jun 16 – Jun 22</span>
                         <span class="week-person"><strong>Bijay</strong></span>
                         <div class="week-day"><select><option value="">Select day...</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
                     </div>
-                    <div class="week-row">
+                    <div class="week-row" data-person="Aabi">
                         <span class="week-label">Week 5</span>
                         <span class="week-dates">Jun 23 – Jun 29</span>
                         <span class="week-person"><strong>Aabi</strong></span>
                         <div class="week-day"><select><option value="">Select day...</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
                     </div>
-                    <div class="week-row">
+                    <div class="week-row" data-person="Simran">
                         <span class="week-label">Week 6</span>
                         <span class="week-dates">Jun 30 – Jul 6</span>
                         <span class="week-person"><strong>Simran</strong></span>
                         <div class="week-day"><select><option value="">Select day...</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
                     </div>
-                    <div class="week-row">
+                    <div class="week-row" data-person="Deepawali">
                         <span class="week-label">Week 7</span>
                         <span class="week-dates">Jul 7 – Jul 13</span>
                         <span class="week-person"><strong>Deepawali</strong></span>
@@ -340,5 +377,20 @@
             🏠 46 Jacana Ave — Aabi, Simran, Deepawali, Bijay
         </p>
     </div>
+    <script>
+        function updateLocks() {
+            const me = document.getElementById('whoami').value;
+            document.querySelectorAll('.week-row').forEach(row => {
+                const sel = row.querySelector('.week-day select');
+                if (!me || row.dataset.person !== me) {
+                    sel.disabled = true;
+                } else {
+                    sel.disabled = false;
+                }
+            });
+        }
+        // Lock all on load
+        updateLocks();
+    </script>
 </body>
 </html>
