@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏠 House Rules — 46 Jacana Ave</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #f093fb, #f5576c, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .section h2 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: #4facfe;
+        }
+        .section h3 {
+            font-size: 1.1em;
+            margin: 15px 0 10px;
+            color: #f5576c;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        th {
+            background: rgba(79, 172, 254, 0.2);
+            color: #4facfe;
+            font-weight: 600;
+        }
+        tr:hover { background: rgba(255,255,255,0.05); }
+        .highlight { color: #f5576c; font-weight: 600; }
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin: 3px;
+        }
+        .tag-green { background: rgba(46, 213, 115, 0.2); color: #2ed573; }
+        .tag-red { background: rgba(245, 87, 108, 0.2); color: #f5576c; }
+        .tag-blue { background: rgba(79, 172, 254, 0.2); color: #4facfe; }
+        .tag-yellow { background: rgba(255, 193, 7, 0.2); color: #ffc107; }
+        ul { padding-left: 20px; margin: 10px 0; }
+        li { margin: 8px 0; line-height: 1.6; }
+        .warning {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #ffc107;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+        .emoji { font-size: 1.2em; }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8em; }
+            .section { padding: 15px; }
+            th, td { padding: 8px 10px; font-size: 0.9em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏠 House Rules</h1>
+        <p class="subtitle">46 Jacana Ave, Broadmeadows VIC 3047</p>
+
+        <!-- Bills & Rent -->
+        <div class="section">
+            <h2>💰 Bills & Rent</h2>
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Amount</th>
+                    <th>Split</th>
+                    <th>Due</th>
+                </tr>
+                <tr>
+                    <td><strong>Rent</strong></td>
+                    <td>$800/mo</td>
+                    <td><span class="tag tag-green">$200 each</span></td>
+                    <td>1st of month</td>
+                </tr>
+                <tr>
+                    <td><strong>Electricity + Gas</strong> (AGL)</td>
+                    <td>~$190/mo</td>
+                    <td><span class="tag tag-blue">~$47.50 each</span></td>
+                    <td>Auto-debit</td>
+                </tr>
+                <tr>
+                    <td><strong>WiFi</strong> (Optus)</td>
+                    <td>$89/mo</td>
+                    <td><span class="tag tag-blue">~$22.25 each</span></td>
+                    <td>Auto-debit</td>
+                </tr>
+            </table>
+            <div class="warning">
+                <strong>⚠️ Rule:</strong> Everyone sends their share by the <span class="highlight">28th of each month</span>. No chasing.
+            </div>
+        </div>
+
+        <!-- Cleaning -->
+        <div class="section">
+            <h2>🧹 Cleaning Roster</h2>
+            <p>One person per week does ALL cleaning on their day off.</p>
+            <table>
+                <tr>
+                    <th>Week</th>
+                    <th>Person</th>
+                    <th>Day Off</th>
+                </tr>
+                <tr>
+                    <td><span class="tag tag-blue">Week 1</span></td>
+                    <td>Aabi</td>
+                    <td>Monday</td>
+                </tr>
+                <tr>
+                    <td><span class="tag tag-blue">Week 2</span></td>
+                    <td>Simran</td>
+                    <td>TBD</td>
+                </tr>
+                <tr>
+                    <td><span class="tag tag-blue">Week 3</span></td>
+                    <td>Deepawali</td>
+                    <td>TBD</td>
+                </tr>
+                <tr>
+                    <td><span class="tag tag-blue">Week 4</span></td>
+                    <td>Bijay</td>
+                    <td>TBD</td>
+                </tr>
+            </table>
+            <h3>On YOUR Week, You Do:</h3>
+            <ul>
+                <li>🧹 Vacuum all rooms, hallways, under furniture</li>
+                <li>🧽 Mop all hard floors</li>
+                <li>🍳 Kitchen deep clean (counters, stovetop, sink, fridge, sweep)</li>
+                <li>🚽 Toilets (scrub, mirrors, mop floor, empty bins)</li>
+                <li>🐕 Dog area cleanup</li>
+            </ul>
+            <h3>Mop Bucket Rules</h3>
+            <p>
+                <span class="tag tag-green">🟢 Bucket A = Kitchen ONLY</span>
+                <span class="tag tag-red">🔴 Bucket B = Toilet ONLY</span>
+            </p>
+            <p class="highlight">⚠️ NEVER cross-use!</p>
+        </div>
+
+        <!-- Daily Rules -->
+        <div class="section">
+            <h2>📋 Daily Rules (Everyone, Every Day)</h2>
+            <ul>
+                <li>🍳 Wash your own dishes — don't leave in sink overnight</li>
+                <li>🧹 Wipe bench after cooking, put stuff back</li>
+                <li>🚽 Flush every time, wipe seat if splash, replace TP when empty</li>
+                <li>🛁 Hang towel, don't leave hair in drain</li>
+                <li>🗑️ If bin is full, take it out</li>
+                <li>👥 Guest mess = your mess</li>
+                <li>📦 Put things back where you found them</li>
+            </ul>
+        </div>
+
+        <!-- Kitchen -->
+        <div class="section">
+            <h2>🍽️ Kitchen & Food</h2>
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Rule</th>
+                </tr>
+                <tr>
+                    <td>Shared staples</td>
+                    <td>Rice, oil, salt, spices — split cost monthly</td>
+                </tr>
+                <tr>
+                    <td>Fridge</td>
+                    <td>Label your food with name + date</td>
+                </tr>
+                <tr>
+                    <td>Leftovers</td>
+                    <td>Can be eaten by anyone after 3 days if unlabeled</td>
+                </tr>
+                <tr>
+                    <td>Personal food</td>
+                    <td>Buy your own — don't touch labeled items</td>
+                </tr>
+                <tr>
+                    <td>Cleaning supplies</td>
+                    <td>Shared — split cost (dish soap, sponges, bin bags)</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Guests -->
+        <div class="section">
+            <h2>🏠 Guests & Gatherings</h2>
+            <ul>
+                <li>📅 Give <span class="highlight">24hr heads-up</span> for overnight guests</li>
+                <li>🌙 Max <span class="highlight">3 consecutive nights</span> — longer needs house approval</li>
+                <li>🧹 You clean up after your guest — their mess is YOUR mess</li>
+                <li>🔊 Be mindful after <span class="highlight">10pm (weekdays)</span> / <span class="highlight">12am (weekends)</span></li>
+                <li>💰 Guest stays >3 nights → they contribute to bills</li>
+            </ul>
+            <h3>Parties</h3>
+            <ul>
+                <li>Small (<5 people): Text the group, keep noise reasonable</li>
+                <li>Big (5+ people): Need house agreement, clean up after</li>
+                <li>After-party: Host cleans everything</li>
+                <li>Max 1-2 gatherings per month — don't take the piss</li>
+            </ul>
+        </div>
+
+        <!-- Quiet Hours -->
+        <div class="section">
+            <h2>🔇 Quiet Hours</h2>
+            <table>
+                <tr>
+                    <th>Time</th>
+                    <th>Rule</th>
+                </tr>
+                <tr>
+                    <td>Weekdays (Mon-Fri)</td>
+                    <td>Quiet after <span class="highlight">10pm</span></td>
+                </tr>
+                <tr>
+                    <td>Weekends (Sat-Sun)</td>
+                    <td>Quiet after <span class="highlight">12am</span></td>
+                </tr>
+                <tr>
+                    <td>Morning</td>
+                    <td>Be mindful before <span class="highlight">8am</span></td>
+                </tr>
+                <tr>
+                    <td>WFH</td>
+                    <td>Keep noise down during work hours</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Dogs -->
+        <div class="section">
+            <h2>🐕 Dogs</h2>
+            <ul>
+                <li>Owner handles feeding, walks, vet</li>
+                <li>Owner cleans up mess immediately — inside and outside</li>
+                <li>Owner pays for any damage to house/furniture</li>
+                <li>Keep dog off shared furniture unless ALL agree</li>
+                <li>If dog barks excessively — owner deals with it</li>
+            </ul>
+        </div>
+
+        <!-- House Meetings -->
+        <div class="section">
+            <h2>📅 House Meetings</h2>
+            <ul>
+                <li><strong>Monthly (optional):</strong> Quick 15-min check-in</li>
+                <li><strong>Quarterly (mandatory):</strong> Review rules, bills, issues</li>
+                <li>Decisions by majority vote (3/4)</li>
+                <li>Minutes written and saved</li>
+            </ul>
+        </div>
+
+        <!-- Don'ts -->
+        <div class="section">
+            <h2>🚫 House Don'ts</h2>
+            <ul>
+                <li>❌ Don't leave dishes in the sink overnight</li>
+                <li>❌ Don't leave lights/fans on when not in room</li>
+                <li>❌ Don't take food that's not yours</li>
+                <li>❌ Don't bring strangers home without notice</li>
+                <li>❌ Don't be loud after quiet hours</li>
+                <li>❌ Don't leave personal stuff in common areas</li>
+                <li>❌ Don't passive-aggressive note on the fridge</li>
+                <li>❌ Don't skip your cleaning week</li>
+                <li>❌ Don't avoid bill payments</li>
+                <li>❌ Don't be a dick — we all live here</li>
+            </ul>
+        </div>
+
+        <!-- Do's -->
+        <div class="section">
+            <h2>✅ House Do's</h2>
+            <ul>
+                <li>✅ Communicate — if something's bothering you, say it</li>
+                <li>✅ Clean up after yourself — baseline every day</li>
+                <li>✅ Pay bills on time — no chasing</li>
+                <li>✅ Respect shared spaces</li>
+                <li>✅ Give notice for guests</li>
+                <li>✅ Contribute to house supplies</li>
+                <li>✅ Attend house meetings</li>
+                <li>✅ Be flexible — life happens</li>
+                <li>✅ Keep your room reasonable</li>
+                <li>✅ Have fun — it's a home, not a prison</li>
+            </ul>
+        </div>
+
+        <p style="text-align:center; color:#666; margin-top:30px; font-size:0.9em;">
+            Last updated: May 28, 2026<br>
+            🏠 46 Jacana Ave — Aabi, Simran, Deepawali, Bijay
+        </p>
+    </div>
+</body>
+</html>
