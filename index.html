@@ -86,7 +86,16 @@
             border-radius: 0 8px 8px 0;
             margin: 15px 0;
         }
-        .emoji { font-size: 1.2em; }
+        .wifi-box {
+            background: rgba(79, 172, 254, 0.1);
+            border: 2px dashed #4facfe;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin: 15px 0;
+        }
+        .wifi-box .ssid { font-size: 1.3em; font-weight: bold; color: #4facfe; }
+        .wifi-box .password { font-size: 1.5em; font-weight: bold; color: #2ed573; letter-spacing: 2px; }
         @media (max-width: 600px) {
             h1 { font-size: 1.8em; }
             .section { padding: 15px; }
@@ -102,34 +111,25 @@
         <!-- Bills & Rent -->
         <div class="section">
             <h2>💰 Bills & Rent</h2>
-            <table>
-                <tr>
-                    <th>Item</th>
-                    <th>Amount</th>
-                    <th>Split</th>
-                    <th>Due</th>
-                </tr>
-                <tr>
-                    <td><strong>Rent</strong></td>
-                    <td>$800/mo</td>
-                    <td><span class="tag tag-green">$200 each</span></td>
-                    <td>1st of month</td>
-                </tr>
-                <tr>
-                    <td><strong>Electricity + Gas</strong> (AGL)</td>
-                    <td>~$190/mo</td>
-                    <td><span class="tag tag-blue">~$47.50 each</span></td>
-                    <td>Auto-debit</td>
-                </tr>
-                <tr>
-                    <td><strong>WiFi</strong> (Optus)</td>
-                    <td>$89/mo</td>
-                    <td><span class="tag tag-blue">~$22.25 each</span></td>
-                    <td>Auto-debit</td>
-                </tr>
-            </table>
             <div class="warning">
-                <strong>⚠️ Rule:</strong> Everyone sends their share by the <span class="highlight">28th of each month</span>. No chasing.
+                <strong>📅 Rent Due:</strong> <span class="highlight">7th of every month</span><br>
+                <strong>📧 Bills:</strong> Arrive on the <span class="highlight">10th of every month</span> via email (auto). Always include the <span class="highlight">reference number</span> when paying.<br>
+                <strong>💡 Estimated Monthly Bills:</strong> ~<span class="highlight">$890</span> total (electricity + gas + WiFi)
+            </div>
+            <div class="warning">
+                <strong>⚠️ Payment Rule:</strong> Everyone sends their share by the <span class="highlight">28th of each month</span>. No chasing.
+            </div>
+        </div>
+
+        <!-- WiFi -->
+        <div class="section">
+            <h2>📶 WiFi</h2>
+            <div class="wifi-box">
+                <p>Network Name (SSID)</p>
+                <p class="ssid">Optus_F8A9F2</p>
+                <br>
+                <p>Password</p>
+                <p class="password">N3tw0rk86!</p>
             </div>
         </div>
 
@@ -164,18 +164,44 @@
                     <td>TBD</td>
                 </tr>
             </table>
-            <h3>On YOUR Week, You Do:</h3>
+
+            <h3>🧹 Vacuuming</h3>
             <ul>
-                <li>🧹 Vacuum all rooms, hallways, under furniture</li>
-                <li>🧽 Mop all hard floors</li>
-                <li>🍳 Kitchen deep clean (counters, stovetop, sink, fridge, sweep)</li>
-                <li>🚽 Toilets (scrub, mirrors, mop floor, empty bins)</li>
-                <li>🐕 Dog area cleanup</li>
+                <li>Do a proper vacuum — especially common areas, living area, and kitchen</li>
+                <li><span class="highlight">2x a week</span> if possible; 1x a week is fine</li>
+                <li>Just ensure the cleaning is done nicely</li>
             </ul>
-            <h3>Mop Bucket Rules</h3>
+
+            <h3>🧽 Mopping</h3>
+            <ul>
+                <li>Mop all hard floors using the <span class="tag tag-green">new mop</span></li>
+                <li>Use the <span class="tag tag-red">old mop</span> for toilets only</li>
+                <li><strong>Both toilets</strong> need to be done</li>
+            </ul>
+
+            <h3>🛁 Bathrooms</h3>
+            <ul>
+                <li>If toilet paper is empty → restock it</li>
+                <li>Extra stock is kept in the <span class="highlight">garage</span></li>
+                <li>If running low on stock → <span class="highlight">let Aabi know</span></li>
+                <li>Bath mats need to be washed <span class="highlight">every week</span></li>
+                <li>Put them in washing machine for <span class="highlight">45 minutes</span>, then dryer</li>
+                <li>Make sure to set them back in place afterward</li>
+            </ul>
+
+            <h3>🍳 Kitchen</h3>
+            <ul>
+                <li>Clean the floor and cooking area thoroughly</li>
+                <li>Check the stove — if it's starting to look black, clean it</li>
+                <li>Range hood is handled by Aabi monthly — you don't need to worry about it</li>
+                <li>Empty bins <span class="highlight">as you go</span> — it gets busy, but try to change them whenever there's a mess</li>
+                <li>On cleaning days: change bins in <strong>both toilets and kitchen</strong> if more than half full</li>
+            </ul>
+
+            <h3>🪣 Mop Bucket Rules</h3>
             <p>
-                <span class="tag tag-green">🟢 Bucket A = Kitchen ONLY</span>
-                <span class="tag tag-red">🔴 Bucket B = Toilet ONLY</span>
+                <span class="tag tag-green">🟢 New Bucket = All areas EXCEPT toilet</span>
+                <span class="tag tag-red">🔴 Old Bucket = Toilet ONLY</span>
             </p>
             <p class="highlight">⚠️ NEVER cross-use!</p>
         </div>
@@ -194,53 +220,15 @@
             </ul>
         </div>
 
-        <!-- Kitchen -->
-        <div class="section">
-            <h2>🍽️ Kitchen & Food</h2>
-            <table>
-                <tr>
-                    <th>Item</th>
-                    <th>Rule</th>
-                </tr>
-                <tr>
-                    <td>Shared staples</td>
-                    <td>Rice, oil, salt, spices — split cost monthly</td>
-                </tr>
-                <tr>
-                    <td>Fridge</td>
-                    <td>Label your food with name + date</td>
-                </tr>
-                <tr>
-                    <td>Leftovers</td>
-                    <td>Can be eaten by anyone after 3 days if unlabeled</td>
-                </tr>
-                <tr>
-                    <td>Personal food</td>
-                    <td>Buy your own — don't touch labeled items</td>
-                </tr>
-                <tr>
-                    <td>Cleaning supplies</td>
-                    <td>Shared — split cost (dish soap, sponges, bin bags)</td>
-                </tr>
-            </table>
-        </div>
-
         <!-- Guests -->
         <div class="section">
             <h2>🏠 Guests & Gatherings</h2>
+            <p>Keep it simple and lively! 🎉</p>
             <ul>
-                <li>📅 Give <span class="highlight">24hr heads-up</span> for overnight guests</li>
-                <li>🌙 Max <span class="highlight">3 consecutive nights</span> — longer needs house approval</li>
-                <li>🧹 You clean up after your guest — their mess is YOUR mess</li>
+                <li>Guests are welcome — just give a <span class="highlight">heads-up on the group</span> if staying more than 1 day</li>
+                <li>Staying more than <span class="highlight">5 days</span>? → <span class="highlight">Approval required</span></li>
+                <li>🧹 Clean up after your guest — their mess is YOUR mess</li>
                 <li>🔊 Be mindful after <span class="highlight">10pm (weekdays)</span> / <span class="highlight">12am (weekends)</span></li>
-                <li>💰 Guest stays >3 nights → they contribute to bills</li>
-            </ul>
-            <h3>Parties</h3>
-            <ul>
-                <li>Small (<5 people): Text the group, keep noise reasonable</li>
-                <li>Big (5+ people): Need house agreement, clean up after</li>
-                <li>After-party: Host cleans everything</li>
-                <li>Max 1-2 gatherings per month — don't take the piss</li>
             </ul>
         </div>
 
@@ -271,43 +259,13 @@
             </table>
         </div>
 
-        <!-- Dogs -->
-        <div class="section">
-            <h2>🐕 Dogs</h2>
-            <ul>
-                <li>Owner handles feeding, walks, vet</li>
-                <li>Owner cleans up mess immediately — inside and outside</li>
-                <li>Owner pays for any damage to house/furniture</li>
-                <li>Keep dog off shared furniture unless ALL agree</li>
-                <li>If dog barks excessively — owner deals with it</li>
-            </ul>
-        </div>
-
         <!-- House Meetings -->
         <div class="section">
             <h2>📅 House Meetings</h2>
             <ul>
-                <li><strong>Monthly (optional):</strong> Quick 15-min check-in</li>
-                <li><strong>Quarterly (mandatory):</strong> Review rules, bills, issues</li>
-                <li>Decisions by majority vote (3/4)</li>
-                <li>Minutes written and saved</li>
-            </ul>
-        </div>
-
-        <!-- Don'ts -->
-        <div class="section">
-            <h2>🚫 House Don'ts</h2>
-            <ul>
-                <li>❌ Don't leave dishes in the sink overnight</li>
-                <li>❌ Don't leave lights/fans on when not in room</li>
-                <li>❌ Don't take food that's not yours</li>
-                <li>❌ Don't bring strangers home without notice</li>
-                <li>❌ Don't be loud after quiet hours</li>
-                <li>❌ Don't leave personal stuff in common areas</li>
-                <li>❌ Don't passive-aggressive note on the fridge</li>
-                <li>❌ Don't skip your cleaning week</li>
-                <li>❌ Don't avoid bill payments</li>
-                <li>❌ Don't be a dick — we all live here</li>
+                <li>Held <span class="highlight">once a month</span>, between the <span class="highlight">5th and 10th</span></li>
+                <li>All rules and changes will be discussed at house meetings</li>
+                <li>Decisions by majority agreement</li>
             </ul>
         </div>
 
