@@ -6,56 +6,89 @@
 <title>🏠 46 Jacana Ave — Cleaning Roster</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f0f2f5; color: #1a1a2e; padding: 20px; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #0f0c29; color: #e0e0e0; min-height: 100vh; padding: 16px; }
+  body.light { background: #f0f2f5; color: #1a1a2e; }
   .container { max-width: 680px; margin: 0 auto; }
 
-  .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 16px 16px 0 0; text-align: center; }
-  .header h1 { font-size: 1.6em; margin-bottom: 6px; }
-  .header p { opacity: 0.9; font-size: 0.95em; }
+  .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 28px 20px; border-radius: 16px 16px 0 0; text-align: center; }
+  .header h1 { font-size: 1.5em; margin-bottom: 4px; }
+  .header p { opacity: 0.9; font-size: 0.9em; }
 
-  .now-card { background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: white; border-radius: 12px; margin: 16px 0; padding: 24px; text-align: center; box-shadow: 0 4px 15px rgba(238,90,36,0.3); }
-  .now-card .label { font-size: 0.85em; text-transform: uppercase; letter-spacing: 2px; opacity: 0.9; margin-bottom: 8px; }
-  .now-card .name { font-size: 2em; font-weight: 800; }
-  .now-card .week { font-size: 0.9em; opacity: 0.85; margin-top: 6px; }
+  .top-bar { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
+  .dark-toggle { background: #333; color: #fff; border: none; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.85em; }
+  body.light .dark-toggle { background: #ddd; color: #333; }
+  .share-btn { background: #25D366; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 0.85em; font-weight: 600; }
+
+  .now-card { border-radius: 12px; margin: 12px 0; padding: 22px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+  .now-card.pending { background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: white; }
+  .now-card.done { background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; }
+  .now-card .label { font-size: 0.8em; text-transform: uppercase; letter-spacing: 2px; opacity: 0.9; margin-bottom: 6px; }
+  .now-card .name { font-size: 1.9em; font-weight: 800; }
+  .now-card .status { font-size: 1em; margin-top: 8px; opacity: 0.95; }
   .now-card .dates { font-size: 0.8em; opacity: 0.7; margin-top: 4px; }
 
-  .upcoming { display: flex; gap: 12px; margin: 16px 0; }
-  .upcoming-card { flex: 1; background: white; border-radius: 12px; padding: 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-  .upcoming-card .week-label { font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-bottom: 6px; }
-  .upcoming-card .name { font-size: 1.1em; font-weight: 700; }
-  .upcoming-card .dates { font-size: 0.8em; color: #666; margin-top: 4px; }
+  .upcoming { display: flex; gap: 10px; margin: 12px 0; }
+  .upcoming-card { flex: 1; background: #1a1a3e; border-radius: 12px; padding: 14px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+  body.light .upcoming-card { background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .upcoming-card .week-label { font-size: 0.7em; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-bottom: 4px; }
+  .upcoming-card .name { font-size: 1em; font-weight: 700; }
+  .upcoming-card .dates { font-size: 0.75em; color: #888; margin-top: 3px; }
 
-  .card { background: white; border-radius: 12px; margin: 16px 0; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-  .card h2 { font-size: 1.15em; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
-  .card h2 .emoji { font-size: 1.3em; }
+  .streak-card { background: linear-gradient(135deg, #f39c12, #e67e22); color: white; border-radius: 12px; padding: 14px; text-align: center; margin: 12px 0; }
+  .streak-card .num { font-size: 2em; font-weight: 800; }
+  .streak-card .text { font-size: 0.85em; opacity: 0.9; }
 
-  .rotation { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 0; flex-wrap: wrap; }
-  .person { background: #f0f2f5; border-radius: 50px; padding: 10px 16px; font-weight: 600; font-size: 0.9em; }
+  .card { background: #1a1a3e; border-radius: 12px; margin: 12px 0; padding: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+  body.light .card { background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); color: #1a1a2e; }
+  .card h2 { font-size: 1.1em; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .card h2 .emoji { font-size: 1.2em; }
+
+  .rotation { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 0; flex-wrap: wrap; }
+  .person { background: #2a2a5e; border-radius: 50px; padding: 8px 14px; font-weight: 600; font-size: 0.85em; }
+  body.light .person { background: #f0f2f5; }
   .person.active { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
-  .arrow { font-size: 1.3em; color: #999; }
+  .arrow { font-size: 1.2em; color: #666; }
 
   .task-list { list-style: none; }
-  .task-list li { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f0f2f5; }
+  .task-list li { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #2a2a5e; }
+  body.light .task-list li { border-bottom-color: #f0f2f5; }
   .task-list li:last-child { border-bottom: none; }
-  .task-icon { font-size: 1.4em; flex-shrink: 0; width: 32px; text-align: center; }
+  .task-check { width: 22px; height: 22px; border: 2px solid #666; border-radius: 6px; flex-shrink: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+  .task-check.checked { background: #667eea; border-color: #667eea; }
+  .task-check.checked::after { content: '\2713'; color: white; font-size: 14px; font-weight: bold; }
+  .task-icon { font-size: 1.3em; width: 28px; text-align: center; flex-shrink: 0; }
   .task-info { flex: 1; }
-  .task-name { font-weight: 600; font-size: 0.95em; }
-  .task-detail { font-size: 0.85em; color: #666; margin-top: 2px; }
+  .task-name { font-weight: 600; font-size: 0.9em; }
+  .task-name.done-text { text-decoration: line-through; color: #888; }
+  .task-detail { font-size: 0.8em; color: #888; margin-top: 1px; }
 
   .checklist { list-style: none; }
-  .checklist li { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f2f5; cursor: pointer; }
+  .checklist li { display: flex; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid #2a2a5e; }
+  body.light .checklist li { border-bottom-color: #f0f2f5; }
   .checklist li:last-child { border-bottom: none; }
-  .checkbox { width: 22px; height: 22px; border: 2px solid #ccc; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+  .checkbox { width: 20px; height: 20px; border: 2px solid #666; border-radius: 5px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; }
   .checklist li.checked .checkbox { background: #667eea; border-color: #667eea; }
-  .checklist li.checked .checkbox::after { content: '\2713'; color: white; font-size: 14px; font-weight: bold; }
-  .checklist li.checked .rule-text { text-decoration: line-through; color: #999; }
-  .rule-text { font-size: 0.92em; }
+  .checklist li.checked .checkbox::after { content: '\2713'; color: white; font-size: 12px; font-weight: bold; }
+  .checklist li.checked .rule-text { text-decoration: line-through; color: #888; }
+  .rule-text { font-size: 0.88em; }
 
-  .aab-section { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 12px; padding: 20px; margin: 16px 0; }
-  .aab-section h2 { color: #2e7d32; }
+  .aab-section { background: linear-gradient(135deg, #1a3a2a, #0d2818); border-radius: 12px; padding: 18px; margin: 12px 0; }
+  body.light .aab-section { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+  .aab-section h2 { color: #2ecc71; }
+  .aab-section p { font-size: 0.9em; line-height: 1.5; }
 
-  .footer { text-align: center; padding: 20px; color: #999; font-size: 0.8em; }
-  .badge { display: inline-block; background: #e3f2fd; color: #1565c0; padding: 3px 10px; border-radius: 20px; font-size: 0.8em; font-weight: 600; }
+  .notes-area { width: 100%; min-height: 80px; background: #12122e; border: 1px solid #333; border-radius: 10px; color: #e0e0e0; padding: 12px; font-family: inherit; font-size: 0.9em; resize: vertical; margin-top: 10px; }
+  body.light .notes-area { background: #f9f9f9; border-color: #ddd; color: #333; }
+  .notes-hint { font-size: 0.75em; color: #666; margin-top: 4px; }
+
+  .footer { text-align: center; padding: 16px; color: #555; font-size: 0.75em; }
+  .badge { display: inline-block; background: #2a2a5e; color: #667eea; padding: 3px 10px; border-radius: 20px; font-size: 0.75em; font-weight: 600; }
+  body.light .badge { background: #e3f2fd; color: #1565c0; }
+
+  .sync-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-left: 6px; }
+  .sync-dot.synced { background: #2ecc71; }
+  .sync-dot.syncing { background: #f39c12; animation: pulse 1s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 </style>
 </head>
 <body>
@@ -67,26 +100,43 @@
     <p>Cleaning Roster & Policy</p>
   </div>
 
-  <div class="now-card">
-    <div class="label">🔥 On Duty This Week</div>
-    <div class="name" id="current-name">Simran</div>
-    <div class="week" id="current-week">Week 1 of 4</div>
-    <div class="dates" id="current-dates">Jun 9 – Jun 15, 2026</div>
+  <div class="top-bar">
+    <button class="dark-toggle" onclick="toggleTheme()">🌙 / ☀️</button>
+    <div>
+      <span class="sync-dot synced" id="sync-dot"></span>
+      <button class="share-btn" onclick="shareToWhatsApp()">📲 Share to Group</button>
+    </div>
   </div>
 
+  <!-- WHO'S ON NOW -->
+  <div class="now-card pending" id="now-card">
+    <div class="label">🔥 On Duty This Week</div>
+    <div class="name" id="current-name">Loading...</div>
+    <div class="status" id="current-status">⏳ Pending</div>
+    <div class="dates" id="current-dates"></div>
+  </div>
+
+  <!-- UPCOMING -->
   <div class="upcoming">
     <div class="upcoming-card">
       <div class="week-label">Next Week</div>
-      <div class="name" id="next1-name">Bijay</div>
-      <div class="dates" id="next1-dates">Jun 16 – Jun 22</div>
+      <div class="name" id="next1-name">...</div>
+      <div class="dates" id="next1-dates"></div>
     </div>
     <div class="upcoming-card">
       <div class="week-label">Week After</div>
-      <div class="name" id="next2-name">Aabik</div>
-      <div class="dates" id="next2-dates">Jun 23 – Jun 29</div>
+      <div class="name" id="next2-name">...</div>
+      <div class="dates" id="next2-dates"></div>
     </div>
   </div>
 
+  <!-- STREAK -->
+  <div class="streak-card">
+    <div class="num" id="streak-num">0</div>
+    <div class="text">Weeks Clean Streak 🔥</div>
+  </div>
+
+  <!-- ROTATION -->
   <div class="card">
     <h2><span class="emoji">👥</span> Rotation Order</h2>
     <div class="rotation" id="rotation-bar">
@@ -99,14 +149,16 @@
       <div class="person" id="rot-3">👩 Deepawali</div>
       <span class="arrow">↻</span>
     </div>
-    <p style="text-align:center; font-size:0.85em; color:#666;">One person per week · 4-week cycle</p>
-    <p style="text-align:center; font-size:0.85em; color:#666; margin-top:6px;">💡 On your week: ~1hr main clean day + ~10 min quick check on one other day (quick vacuum, small fixes)</p>
+    <p style="text-align:center; font-size:0.82em; color:#666;">One person per week · 4-week cycle</p>
+    <p style="text-align:center; font-size:0.82em; color:#666; margin-top:4px;">💡 ~1hr main clean day + ~10 min quick check on one other day</p>
   </div>
 
+  <!-- MAIN CLEAN -->
   <div class="card">
     <h2><span class="emoji">🧹</span> Main Clean Tasks <span class="badge">~1 hour</span></h2>
-    <ul class="task-list">
+    <ul class="task-list" id="task-list">
       <li>
+        <div class="task-check" data-task="vacuum" onclick="toggleTask(this)"></div>
         <span class="task-icon">🔌</span>
         <div class="task-info">
           <div class="task-name">Vacuum all areas</div>
@@ -114,6 +166,7 @@
         </div>
       </li>
       <li>
+        <div class="task-check" data-task="mop" onclick="toggleTask(this)"></div>
         <span class="task-icon">🧽</span>
         <div class="task-info">
           <div class="task-name">Mop all floors</div>
@@ -121,6 +174,7 @@
         </div>
       </li>
       <li>
+        <div class="task-check" data-task="bathmats" onclick="toggleTask(this)"></div>
         <span class="task-icon">🛁</span>
         <div class="task-info">
           <div class="task-name">Bath mats</div>
@@ -128,6 +182,7 @@
         </div>
       </li>
       <li>
+        <div class="task-check" data-task="toilet" onclick="toggleTask(this)"></div>
         <span class="task-icon">🚽</span>
         <div class="task-info">
           <div class="task-name">Toilet</div>
@@ -135,6 +190,7 @@
         </div>
       </li>
       <li>
+        <div class="task-check" data-task="mirrors" onclick="toggleTask(this)"></div>
         <span class="task-icon">🪞</span>
         <div class="task-info">
           <div class="task-name">Mirrors</div>
@@ -142,6 +198,7 @@
         </div>
       </li>
       <li>
+        <div class="task-check" data-task="basin" onclick="toggleTask(this)"></div>
         <span class="task-icon">🚿</span>
         <div class="task-info">
           <div class="task-name">Basin</div>
@@ -149,6 +206,7 @@
         </div>
       </li>
       <li>
+        <div class="task-check" data-task="bins" onclick="toggleTask(this)"></div>
         <span class="task-icon">🗑️</span>
         <div class="task-info">
           <div class="task-name">Empty all bins</div>
@@ -156,6 +214,7 @@
         </div>
       </li>
       <li>
+        <div class="task-check" data-task="kitchen" onclick="toggleTask(this)"></div>
         <span class="task-icon">🍳</span>
         <div class="task-info">
           <div class="task-name">Kitchen</div>
@@ -163,6 +222,7 @@
         </div>
       </li>
       <li>
+        <div class="task-check" data-task="shoes" onclick="toggleTask(this)"></div>
         <span class="task-icon">👟</span>
         <div class="task-info">
           <div class="task-name">Shoe area</div>
@@ -170,82 +230,90 @@
         </div>
       </li>
     </ul>
+    <button onclick="markAllDone()" style="margin-top:12px; background:#667eea; color:white; border:none; padding:10px 20px; border-radius:10px; cursor:pointer; font-weight:600; font-size:0.9em; width:100%;">✅ Mark All Done</button>
   </div>
 
+  <!-- RULES -->
   <div class="card">
     <h2><span class="emoji">📋</span> House Rules</h2>
-    <ul class="checklist" id="rules">
-      <li onclick="toggleCheck(this)">
+    <ul class="checklist">
+      <li onclick="toggleRule(this)">
         <div class="checkbox"></div>
         <span class="rule-text">All tasks done by end of the day on your scheduled day</span>
       </li>
-      <li onclick="toggleCheck(this)">
+      <li onclick="toggleRule(this)">
         <div class="checkbox"></div>
-        <span class="rule-text">Can't do your day? Swap with someone or notify the group before your day</span>
+        <span class="rule-text">Can't do your day? Swap or notify the group before your day</span>
       </li>
-      <li onclick="toggleCheck(this)">
+      <li onclick="toggleRule(this)">
         <div class="checkbox"></div>
-        <span class="rule-text">Vacuum battery must be put on charge after every use</span>
+        <span class="rule-text">Vacuum battery on charge after every use</span>
       </li>
-      <li onclick="toggleCheck(this)">
+      <li onclick="toggleRule(this)">
         <div class="checkbox"></div>
-        <span class="rule-text">If no notice given → next week's tasks double up on your next turn</span>
+        <span class="rule-text">No notice = next turn doubles up</span>
       </li>
     </ul>
   </div>
 
+  <!-- EXTRA WORKS -->
   <div class="aab-section">
     <h2><span class="emoji">🧑‍🌾</span> Extra Household Works — Once a Month</h2>
-    <p style="font-size:0.85em; color:#555; margin-bottom:12px;">Extra tasks done once a month (in addition to main clean)</p>
-    <ul class="task-list">
-      <li>
-        <span class="task-icon">✂️</span>
-        <div class="task-info">
-          <div class="task-name">Grass cutting</div>
-          <div class="task-detail">Outside areas</div>
-        </div>
-      </li>
-      <li>
-        <span class="task-icon">💨</span>
-        <div class="task-info">
-          <div class="task-name">Exhaust fan cleaning</div>
-          <div class="task-detail">Monthly</div>
-        </div>
-      </li>
-      <li>
-        <span class="task-icon">🏠</span>
-        <div class="task-info">
-          <div class="task-name">Home organisation</div>
-          <div class="task-detail">Ongoing</div>
-        </div>
-      </li>
-      <li>
-        <span class="task-icon">🧴</span>
-        <div class="task-info">
-          <div class="task-name">Cleaning chemicals</div>
-          <div class="task-detail">Let Aabi know what's needed — bulk buy monthly</div>
-        </div>
-      </li>
-      <li>
-        <span class="task-icon">🧊</span>
-        <div class="task-info">
-          <div class="task-name">Fridge cleaning</div>
-          <div class="task-detail">Monthly</div>
-        </div>
-      </li>
+    <p>Extra tasks done once a month (in addition to main clean)</p>
+    <ul class="task-list" style="margin-top:10px;">
+      <li><span class="task-icon">✂️</span><div class="task-info"><div class="task-name">Grass cutting</div></div></li>
+      <li><span class="task-icon">💨</span><div class="task-info"><div class="task-name">Exhaust fan cleaning</div></div></li>
+      <li><span class="task-icon">🏠</span><div class="task-info"><div class="task-name">Home organisation</div></div></li>
+      <li><span class="task-icon">🧴</span><div class="task-info"><div class="task-name">Cleaning chemicals</div></div></li>
+      <li><span class="task-icon">🧊</span><div class="task-info"><div class="task-name">Fridge cleaning</div></div></li>
     </ul>
+  </div>
+
+  <!-- SHARED NOTES -->
+  <div class="card">
+    <h2><span class="emoji">📝</span> Shared Notes</h2>
+    <textarea class="notes-area" id="shared-notes" placeholder="Leave a note for the group... (e.g. out of floor chemicals, tap leaking, etc.)" oninput="saveNotes()"></textarea>
+    <div class="notes-hint">💾 Auto-saved to cloud · Visible to everyone</div>
   </div>
 
   <div class="footer">
-    <p>Created by Aabik · Last updated <span id="last-updated">Jun 9, 2026</span></p>
+    <p>Created by Aabik · Synced via Firebase ☁️</p>
   </div>
 
 </div>
 
-<script>
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+import { getDatabase, ref, onValue, set, update } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDnutXWxZlF4yPMJbjruY6H5H29TSo3rxk",
+  authDomain: "house-roster-b3107.firebaseapp.com",
+  databaseURL: "https://house-roster-b3107-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "house-roster-b3107",
+  storageBucket: "house-roster-b3107.firebasestorage.app",
+  messagingSenderId: "513028634566",
+  appId: "1:513028634566:web:053ff7528a92de9631e4c7"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+// ========== ROTATION CONFIG ==========
 const ROTATION = ["Simran", "Bijay", "Aabik", "Deepawali"];
 const START_DATE = "2026-06-09";
 const START_INDEX = 0;
+
+function getWeekKey() {
+  const now = new Date();
+  const start = new Date(START_DATE + "T00:00:00");
+  const diffDays = Math.floor((now - start) / (1000 * 60 * 60 * 24));
+  const weeksSinceStart = Math.floor(diffDays / 7);
+  const weekNum = weeksSinceStart + 1;
+  const year = now.getFullYear();
+  return `W${weekNum}-${year}`;
+}
 
 function getWeekInfo() {
   const now = new Date();
@@ -276,7 +344,6 @@ function getWeekInfo() {
   return {
     current: ROTATION[currentIndex],
     currentDates: fmt(thisMonday) + " – " + fmt(thisSunday) + ", " + thisSunday.getFullYear(),
-    currentWeek: "Week " + (currentIndex + 1) + " of " + ROTATION.length,
     next1: ROTATION[next1Index],
     next1Dates: fmt(nextMonday) + " – " + fmt(nextSunday),
     next2: ROTATION[next2Index],
@@ -285,23 +352,162 @@ function getWeekInfo() {
   };
 }
 
-function updatePage() {
-  const info = getWeekInfo();
+// ========== UI UPDATE ==========
+function updateUI(info, tasks, done, notes) {
   document.getElementById('current-name').textContent = info.current;
-  document.getElementById('current-week').textContent = info.currentWeek;
   document.getElementById('current-dates').textContent = info.currentDates;
   document.getElementById('next1-name').textContent = info.next1;
   document.getElementById('next1-dates').textContent = info.next1Dates;
   document.getElementById('next2-name').textContent = info.next2;
   document.getElementById('next2-dates').textContent = info.next2Dates;
+
+  // Update rotation bar
   for (let i = 0; i < ROTATION.length; i++) {
     const el = document.getElementById('rot-' + i);
     if (el) el.classList.toggle('active', i === info.currentIndex);
   }
+
+  // Update task checkboxes
+  const taskChecks = document.querySelectorAll('.task-check');
+  taskChecks.forEach(el => {
+    const task = el.dataset.task;
+    if (tasks && tasks[task]) {
+      el.classList.add('checked');
+      el.closest('li').querySelector('.task-name').classList.add('done-text');
+    } else {
+      el.classList.remove('checked');
+      el.closest('li').querySelector('.task-name').classList.remove('done-text');
+    }
+  });
+
+  // Update status
+  const nowCard = document.getElementById('now-card');
+  const statusEl = document.getElementById('current-status');
+  if (done) {
+    nowCard.className = 'now-card done';
+    statusEl.textContent = '✅ Clean Done!';
+  } else {
+    nowCard.className = 'now-card pending';
+    statusEl.textContent = '⏳ Pending';
+  }
+
+  // Update notes
+  const notesEl = document.getElementById('shared-notes');
+  if (notes && notesEl !== document.activeElement) {
+    notesEl.value = notes || '';
+  }
 }
 
-function toggleCheck(el) { el.classList.toggle('checked'); }
-updatePage();
+// ========== FIREBASE LISTENERS ==========
+const weekKey = getWeekKey();
+const weekRef = ref(db, 'weeks/' + weekKey);
+const streakRef = ref(db, 'streak');
+const notesRef = ref(db, 'notes');
+
+onValue(weekRef, (snap) => {
+  const data = snap.val() || {};
+  const info = getWeekInfo();
+  updateUI(info, data.tasks || {}, data.done || false, null);
+  showSynced();
+});
+
+onValue(notesRef, (snap) => {
+  const notes = snap.val();
+  const notesEl = document.getElementById('shared-notes');
+  if (notesEl !== document.activeElement) {
+    notesEl.value = notes || '';
+  }
+});
+
+onValue(streakRef, (snap) => {
+  const streak = snap.val() || 0;
+  document.getElementById('streak-num').textContent = streak;
+});
+
+// Init UI
+const initInfo = getWeekInfo();
+updateUI(initInfo, {}, false, '');
+
+// ========== FUNCTIONS ==========
+window.toggleTask = function(el) {
+  const task = el.dataset.task;
+  const isChecked = el.classList.contains('checked');
+  showSyncing();
+
+  const taskRef = ref(db, 'weeks/' + weekKey + '/tasks/' + task);
+  set(taskRef, !isChecked).then(() => {
+    // Check if all tasks done
+    const allChecks = document.querySelectorAll('.task-check');
+    const allDone = Array.from(allChecks).every(c => {
+      return c.dataset.task === task ? !isChecked : c.classList.contains('checked');
+    });
+    if (allDone) {
+      update(ref(db, 'weeks/' + weekKey), { done: true });
+      incrementStreak();
+    }
+  });
+};
+
+window.markAllDone = function() {
+  showSyncing();
+  const tasks = {};
+  document.querySelectorAll('.task-check').forEach(el => {
+    tasks[el.dataset.task] = true;
+  });
+  update(ref(db, 'weeks/' + weekKey), { tasks: tasks, done: true });
+  incrementStreak();
+};
+
+function incrementStreak() {
+  onValue(streakRef, (snap) => {
+    const current = snap.val() || 0;
+    set(streakRef, current + 1);
+  }, { onlyOnce: true });
+}
+
+window.toggleRule = function(el) {
+  el.classList.toggle('checked');
+};
+
+window.saveNotes = function() {
+  const val = document.getElementById('shared-notes').value;
+  showSyncing();
+  set(notesRef, val).then(() => showSynced());
+};
+
+function showSynced() {
+  const dot = document.getElementById('sync-dot');
+  dot.className = 'sync-dot synced';
+}
+
+function showSyncing() {
+  const dot = document.getElementById('sync-dot');
+  dot.className = 'sync-dot syncing';
+  setTimeout(showSynced, 1500);
+}
+
+// ========== DARK MODE ==========
+window.toggleTheme = function() {
+  document.body.classList.toggle('light');
+  localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+};
+
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light');
+}
+
+// ========== SHARE ==========
+window.shareToWhatsApp = function() {
+  const info = getWeekInfo();
+  const text = `🏠 *46 Jacana Ave — Cleaning Roster*\n\n` +
+    `🔥 *This week:* ${info.current}\n` +
+    `📅 ${info.currentDates}\n\n` +
+    `➡️ *Next:* ${info.next1} (${info.next1Dates})\n` +
+    `➡️ *Then:* ${info.next2} (${info.next2Dates})\n\n` +
+    `📋 Check your tasks: ${window.location.href}`;
+  window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+};
+
 </script>
 
 </body>
