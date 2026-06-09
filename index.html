@@ -1,410 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏠 House Rules — 46 Jacana Ave</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: #e0e0e0;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        h1 {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #f093fb, #f5576c, #4facfe);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .subtitle {
-            text-align: center;
-            color: #888;
-            margin-bottom: 30px;
-            font-size: 1.1em;
-        }
-        .section {
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-        }
-        .section h2 {
-            font-size: 1.4em;
-            margin-bottom: 15px;
-            color: #4facfe;
-        }
-        .section h3 {
-            font-size: 1.1em;
-            margin: 15px 0 10px;
-            color: #f5576c;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        th {
-            background: rgba(79, 172, 254, 0.2);
-            color: #4facfe;
-            font-weight: 600;
-        }
-        tr:hover { background: rgba(255,255,255,0.05); }
-        .highlight { color: #f5576c; font-weight: 600; }
-        .tag {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            margin: 3px;
-        }
-        .tag-green { background: rgba(46, 213, 115, 0.2); color: #2ed573; }
-        .tag-red { background: rgba(245, 87, 108, 0.2); color: #f5576c; }
-        .tag-blue { background: rgba(79, 172, 254, 0.2); color: #4facfe; }
-        .tag-yellow { background: rgba(255, 193, 7, 0.2); color: #ffc107; }
-        ul { padding-left: 20px; margin: 10px 0; }
-        li { margin: 8px 0; line-height: 1.6; }
-        .warning {
-            background: rgba(255, 193, 7, 0.1);
-            border-left: 4px solid #ffc107;
-            padding: 12px 16px;
-            border-radius: 0 8px 8px 0;
-            margin: 15px 0;
-        }
-        .wifi-box {
-            background: rgba(79, 172, 254, 0.1);
-            border: 2px dashed #4facfe;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            margin: 15px 0;
-        }
-        .wifi-box .label { color: #888; font-size: 0.9em; margin-bottom: 5px; }
-        .wifi-box .value { font-size: 1.3em; font-weight: bold; color: #4facfe; }
-        .wifi-box .password { font-size: 1.5em; font-weight: bold; color: #2ed573; letter-spacing: 2px; }
-        details { margin: 10px 0; }
-        summary {
-            cursor: pointer;
-            padding: 10px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 8px;
-            font-weight: 600;
-            color: #4facfe;
-        }
-        summary:hover { background: rgba(255,255,255,0.1); }
-        .week-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .week-label { min-width: 80px; font-weight: 600; color: #4facfe; }
-        .week-dates { flex: 1; color: #aaa; }
-        .week-person { min-width: 100px; }
-        .week-day select {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #e0e0e0;
-            padding: 6px 10px;
-            border-radius: 6px;
-            width: 100%;
-        }
-        .week-day select:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-        .who-am-i {
-            background: rgba(79, 172, 254, 0.1);
-            border: 2px solid #4facfe;
-            border-radius: 12px;
-            padding: 15px 20px;
-            margin: 15px 0;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .who-am-i label { font-weight: 600; color: #4facfe; white-space: nowrap; }
-        .who-am-i select {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #e0e0e0;
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-size: 1em;
-        }
-        .who-am-i .hint { color: #888; font-size: 0.85em; width: 100%; }
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8em; }
-            .section { padding: 15px; }
-            th, td { padding: 8px 10px; font-size: 0.9em; }
-            .week-row { flex-wrap: wrap; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏠 46 Jacana Ave — Cleaning Roster</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f0f2f5; color: #1a1a2e; padding: 20px; }
+  .container { max-width: 680px; margin: 0 auto; }
+
+  .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 16px 16px 0 0; text-align: center; }
+  .header h1 { font-size: 1.6em; margin-bottom: 6px; }
+  .header p { opacity: 0.9; font-size: 0.95em; }
+
+  /* WHO'S ON NOW */
+  .now-card { background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: white; border-radius: 12px; margin: 16px 0; padding: 24px; text-align: center; box-shadow: 0 4px 15px rgba(238,90,36,0.3); }
+  .now-card .label { font-size: 0.85em; text-transform: uppercase; letter-spacing: 2px; opacity: 0.9; margin-bottom: 8px; }
+  .now-card .name { font-size: 2em; font-weight: 800; }
+  .now-card .week { font-size: 0.9em; opacity: 0.85; margin-top: 6px; }
+  .now-card .dates { font-size: 0.8em; opacity: 0.7; margin-top: 4px; }
+
+  /* UPCOMING */
+  .upcoming { display: flex; gap: 12px; margin: 16px 0; }
+  .upcoming-card { flex: 1; background: white; border-radius: 12px; padding: 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .upcoming-card .week-label { font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-bottom: 6px; }
+  .upcoming-card .name { font-size: 1.1em; font-weight: 700; }
+  .upcoming-card .dates { font-size: 0.8em; color: #666; margin-top: 4px; }
+
+  .card { background: white; border-radius: 12px; margin: 16px 0; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .card h2 { font-size: 1.15em; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .card h2 .emoji { font-size: 1.3em; }
+
+  .rotation { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 16px 0; flex-wrap: wrap; }
+  .person { background: #f0f2f5; border-radius: 50px; padding: 10px 20px; font-weight: 600; font-size: 0.95em; }
+  .person.active { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+  .arrow { font-size: 1.3em; color: #999; }
+
+  .task-list { list-style: none; }
+  .task-list li { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f0f2f5; }
+  .task-list li:last-child { border-bottom: none; }
+  .task-icon { font-size: 1.4em; flex-shrink: 0; width: 32px; text-align: center; }
+  .task-info { flex: 1; }
+  .task-name { font-weight: 600; font-size: 0.95em; }
+  .task-detail { font-size: 0.85em; color: #666; margin-top: 2px; }
+
+  .checklist { list-style: none; }
+  .checklist li { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f2f5; cursor: pointer; }
+  .checklist li:last-child { border-bottom: none; }
+  .checkbox { width: 22px; height: 22px; border: 2px solid #ccc; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+  .checklist li.checked .checkbox { background: #667eea; border-color: #667eea; }
+  .checklist li.checked .checkbox::after { content: '\2713'; color: white; font-size: 14px; font-weight: bold; }
+  .checklist li.checked .rule-text { text-decoration: line-through; color: #999; }
+  .rule-text { font-size: 0.92em; }
+
+  .aab-section { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 12px; padding: 20px; margin: 16px 0; }
+  .aab-section h2 { color: #2e7d32; }
+
+  .footer { text-align: center; padding: 20px; color: #999; font-size: 0.8em; }
+  .badge { display: inline-block; background: #e3f2fd; color: #1565c0; padding: 3px 10px; border-radius: 20px; font-size: 0.8em; font-weight: 600; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>🏠 House Rules</h1>
-        <p class="subtitle">46 Jacana Ave, Broadmeadows VIC 3047</p>
 
-        <!-- Bills & Rent -->
-        <div class="section">
-            <h2>💰 Bills & Rent</h2>
-            <div class="warning">
-                <strong>📅 Rent Due:</strong> <span class="highlight">7th of every month</span><br>
-                <strong>📧 Bills:</strong> Arrive on the <span class="highlight">10th of every month</span> via email (auto). Always include the <span class="highlight">reference number</span> when paying.<br>
-                <strong>💡 Estimated Monthly Bills:</strong> ~<span class="highlight">$90</span> total (electricity + gas + WiFi)
-            </div>
-            <div class="warning">
-                <strong>⚠️ Payment:</strong> If you can't pay by the due date, no stress — just give a <span class="highlight">heads-up</span> and let us know how long you need. Communication is key! 🤝
-            </div>
-        </div>
+<div class="container">
 
-        <!-- WiFi -->
-        <div class="section">
-            <h2>📶 WiFi</h2>
-            <div class="wifi-box">
-                <p class="label">Network Name (SSID)</p>
-                <p class="value">NOKIA-30ED</p>
-                <br>
-                <p class="label">Type</p>
-                <p class="value">WPA</p>
-                <br>
-                <p class="label">Password</p>
-                <p class="password">43acc26374</p>
-            </div>
-        </div>
+  <div class="header">
+    <h1>🏠 46 Jacana Ave</h1>
+    <p>Cleaning Roster & Policy</p>
+  </div>
 
-        <!-- Cleaning -->
-        <div class="section">
-            <h2>🧹 Cleaning Roster</h2>
-            <p>One person per week does ALL cleaning on their day off.</p>
+  <!-- WHO'S ON NOW -->
+  <div class="now-card">
+    <div class="label">🔥 On Duty This Week</div>
+    <div class="name" id="current-name">Simran</div>
+    <div class="week" id="current-week">Week 1 of 3</div>
+    <div class="dates" id="current-dates">Jun 9 – Jun 15, 2026</div>
+  </div>
 
-            <div class="who-am-i">
-                <label for="whoami">👤 I am:</label>
-                <select id="whoami" onchange="updateLocks()">
-                    <option value="">Select yourself...</option>
-                    <option value="Aabi">Aabi</option>
-                    <option value="Simran">Simran</option>
-                    <option value="Deepawali">Deepawali</option>
-                    <option value="Bijay">Bijay</option>
-                </select>
-                <span class="hint">Select your name to edit only YOUR cleaning day. Others stay locked.</span>
-            </div>
-
-            <h3>📅 Upcoming Weeks</h3>
-            <details open>
-                <summary>Show Cleaning Schedule (tap to expand/collapse)</summary>
-                <div style="margin-top: 15px;">
-                    <div class="week-row" data-person="Aabi" data-week="1">
-                        <span class="week-label">Week 1</span>
-                        <span class="week-dates">May 26 – Jun 1</span>
-                        <span class="week-person"><strong>Aabi</strong></span>
-                        <div class="week-day"><select><option value="">Select day...</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
-                    </div>
-                    <div class="week-row" data-person="Simran" data-week="2">
-                        <span class="week-label">Week 2</span>
-                        <span class="week-dates">Jun 2 – Jun 8</span>
-                        <span class="week-person"><strong>Simran</strong></span>
-                        <div class="week-day"><select><option value="">Select day...</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
-                    </div>
-                    <div class="week-row" data-person="Deepawali" data-week="3">
-                        <span class="week-label">Week 3</span>
-                        <span class="week-dates">Jun 9 – Jun 15</span>
-                        <span class="week-person"><strong>Deepawali</strong></span>
-                        <div class="week-day"><select><option value="">Select day...</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
-                    </div>
-                    <div class="week-row" data-person="Bijay" data-week="4">
-                        <span class="week-label">Week 4</span>
-                        <span class="week-dates">Jun 16 – Jun 22</span>
-                        <span class="week-person"><strong>Bijay</strong></span>
-                        <div class="week-day"><select><option value="">Select day...</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
-                    </div>
-                    <div class="week-row" data-person="Aabi" data-week="5">
-                        <span class="week-label">Week 5</span>
-                        <span class="week-dates">Jun 23 – Jun 29</span>
-                        <span class="week-person"><strong>Aabi</strong></span>
-                        <div class="week-day"><select><option value="">Select day...</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
-                    </div>
-                    <div class="week-row" data-person="Simran" data-week="6">
-                        <span class="week-label">Week 6</span>
-                        <span class="week-dates">Jun 30 – Jul 6</span>
-                        <span class="week-person"><strong>Simran</strong></span>
-                        <div class="week-day"><select><option value="">Select day...</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
-                    </div>
-                    <div class="week-row" data-person="Deepawali" data-week="7">
-                        <span class="week-label">Week 7</span>
-                        <span class="week-dates">Jul 7 – Jul 13</span>
-                        <span class="week-person"><strong>Deepawali</strong></span>
-                        <div class="week-day"><select><option value="">Select day...</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
-                    </div>
-                </div>
-            </details>
-            <p style="margin-top: 10px; color: #888; font-size: 0.9em;">📋 Your buddy will review this during the weekly review and update the roster.</p>
-
-            <h3>🧹 Vacuuming</h3>
-            <ul>
-                <li>Do a proper vacuum — especially common areas, living area, and kitchen</li>
-                <li><span class="highlight">2x a week</span> if possible; 1x a week is fine</li>
-                <li>Just ensure the cleaning is done nicely</li>
-            </ul>
-
-            <h3>🧽 Mopping</h3>
-            <ul>
-                <li>Mop all hard floors using the <span class="tag tag-green">new mop</span></li>
-                <li>Use the <span class="tag tag-red">old mop</span> for toilets only</li>
-                <li><strong>Both toilets</strong> need to be done</li>
-            </ul>
-
-            <h3>🛁 Bathrooms</h3>
-            <ul>
-                <li>If toilet paper is empty → restock it</li>
-                <li>Extra stock is kept in the <span class="highlight">garage</span></li>
-                <li>If running low on stock → <span class="highlight">let Aabi know</span></li>
-                <li>Bath mats need to be washed <span class="highlight">every week</span></li>
-                <li>Put them in washing machine for <span class="highlight">45 minutes</span>, then dryer</li>
-                <li>Make sure to set them back in place afterward</li>
-            </ul>
-
-            <h3>🍳 Kitchen</h3>
-            <ul>
-                <li>Clean the floor and cooking area thoroughly</li>
-                <li>Check the stove — if it's starting to look black, clean it</li>
-                <li>Range hood is handled by Aabi monthly — you don't need to worry about it</li>
-                <li>Empty bins <span class="highlight">as you go</span> — it gets busy, but try to change them whenever there's a mess</li>
-                <li>On cleaning days: change bins in <strong>both toilets and kitchen</strong> if more than half full</li>
-            </ul>
-
-            <h3>🪣 Mop Bucket Rules</h3>
-            <p>
-                <span class="tag tag-green">🟢 New Bucket = All areas EXCEPT toilet</span>
-                <span class="tag tag-red">🔴 Old Bucket = Toilet ONLY</span>
-            </p>
-            <p class="highlight">⚠️ NEVER cross-use!</p>
-        </div>
-
-        <!-- Daily Rules -->
-        <div class="section">
-            <h2>📋 Daily Rules (Everyone, Every Day)</h2>
-            <ul>
-                <li>🍳 Wash your own dishes — don't leave them overnight. If you're extremely busy, it's fine to take a break, but make sure to clean them thoroughly later. Always try to keep them clean.</li>
-                <li>🧹 Wipe bench after cooking, put stuff back</li>
-                <li>🚽 Flush every time, wipe seat if splash, replace TP when empty</li>
-                <li>🗑️ If bin is full, take it out</li>
-                <li>👥 Guest mess = your mess</li>
-                <li>📦 Put things back where you found them</li>
-            </ul>
-        </div>
-
-        <!-- Guests -->
-        <div class="section">
-            <h2>🏠 Guests & Gatherings</h2>
-            <p>Keep it simple and lively! 🎉</p>
-            <ul>
-                <li>Guests are welcome — just give a <span class="highlight">heads-up on the group</span> if staying more than 1 day</li>
-                <li>Staying more than <span class="highlight">5 days</span>? → <span class="highlight">Approval required</span></li>
-                <li>🧹 Clean up after your guest — their mess is YOUR mess</li>
-                <li>🔊 Be mindful after <span class="highlight">10pm (weekdays)</span> / <span class="highlight">12am (weekends)</span></li>
-            </ul>
-        </div>
-
-        <!-- House Meetings -->
-        <div class="section">
-            <h2>📅 House Meetings</h2>
-            <ul>
-                <li>Held <span class="highlight">once a month</span>, between the <span class="highlight">5th and 10th</span></li>
-                <li>All rules and changes will be discussed at house meetings</li>
-                <li>Decisions by majority agreement</li>
-            </ul>
-        </div>
-
-        <!-- Do's -->
-        <div class="section">
-            <h2>✅ House Do's</h2>
-            <ul>
-                <li>✅ Communicate — if something's bothering you, say it</li>
-                <li>✅ Clean up after yourself — baseline every day</li>
-                <li>✅ Pay bills on time or give a heads-up if you can't</li>
-                <li>✅ Respect shared spaces</li>
-                <li>✅ Give notice for guests</li>
-                <li>✅ Contribute to house supplies</li>
-                <li>✅ Attend house meetings</li>
-                <li>✅ Be flexible — life happens</li>
-                <li>✅ Keep your room reasonable</li>
-                <li>✅ Have fun — it's a home, not a prison</li>
-            </ul>
-        </div>
-
-        <p style="text-align:center; color:#666; margin-top:30px; font-size:0.9em;">
-            Last updated: May 28, 2026<br>
-            🏠 46 Jacana Ave — Aabi, Simran, Deepawali, Bijay
-        </p>
+  <!-- UPCOMING -->
+  <div class="upcoming">
+    <div class="upcoming-card">
+      <div class="week-label">Next Week</div>
+      <div class="name" id="next1-name">Deepawali</div>
+      <div class="dates" id="next1-dates">Jun 16 – Jun 22</div>
     </div>
-    <script>
-        // Load saved selections from server
-        async function loadRoster() {
-            try {
-                const res = await fetch('/api/roster');
-                const data = await res.json();
-                document.querySelectorAll('.week-row').forEach(row => {
-                    const week = row.dataset.week;
-                    const sel = row.querySelector('.week-day select');
-                    if (data[week]) {
-                        sel.value = data[week].day;
-                    }
-                });
-            } catch (e) {
-                console.log('Could not load roster:', e);
-            }
-        }
+    <div class="upcoming-card">
+      <div class="week-label">Week After</div>
+      <div class="name" id="next2-name">Bijay</div>
+      <div class="dates" id="next2-dates">Jun 23 – Jun 29</div>
+    </div>
+  </div>
 
-        // Save selection to server
-        async function saveDay(week, person, day) {
-            if (!day) return;
-            try {
-                await fetch('/api/roster', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ week, person, day })
-                });
-            } catch (e) {
-                console.log('Could not save:', e);
-            }
-        }
+  <!-- ROTATION -->
+  <div class="card">
+    <h2><span class="emoji">👥</span> Rotation Order</h2>
+    <div class="rotation" id="rotation-bar">
+      <div class="person active" id="rot-0">🧑 Simran</div>
+      <span class="arrow">→</span>
+      <div class="person" id="rot-1">👩 Deepawali</div>
+      <span class="arrow">→</span>
+      <div class="person" id="rot-2">🧑 Bijay</div>
+      <span class="arrow">↻</span>
+    </div>
+    <p style="text-align:center; font-size:0.85em; color:#666;">One person per week · Aabi handles outside stuff separately</p>
+  </div>
 
-        function updateLocks() {
-            const me = document.getElementById('whoami').value;
-            document.querySelectorAll('.week-row').forEach(row => {
-                const sel = row.querySelector('.week-day select');
-                if (!me || row.dataset.person !== me) {
-                    sel.disabled = true;
-                } else {
-                    sel.disabled = false;
-                }
-            });
-        }
+  <!-- MAIN CLEAN -->
+  <div class="card">
+    <h2><span class="emoji">🧹</span> Main Clean Tasks <span class="badge">~1 hour</span></h2>
+    <ul class="task-list">
+      <li>
+        <span class="task-icon">🔌</span>
+        <div class="task-info">
+          <div class="task-name">Vacuum all areas</div>
+          <div class="task-detail">Put battery on charge after every use</div>
+        </div>
+      </li>
+      <li>
+        <span class="task-icon">🧽</span>
+        <div class="task-info">
+          <div class="task-name">Mop all floors</div>
+          <div class="task-detail">Hot water + floor chemicals · Red mop for all areas</div>
+        </div>
+      </li>
+      <li>
+        <span class="task-icon">🛁</span>
+        <div class="task-info">
+          <div class="task-name">Bath mats</div>
+          <div class="task-detail">Wash 45 min → dryer → put back same day</div>
+        </div>
+      </li>
+      <li>
+        <span class="task-icon">🚽</span>
+        <div class="task-info">
+          <div class="task-name">Toilet</div>
+          <div class="task-detail">Clean with chemicals</div>
+        </div>
+      </li>
+      <li>
+        <span class="task-icon">🪞</span>
+        <div class="task-info">
+          <div class="task-name">Mirrors</div>
+          <div class="task-detail">Chemical spray</div>
+        </div>
+      </li>
+      <li>
+        <span class="task-icon">🚿</span>
+        <div class="task-info">
+          <div class="task-name">Basin</div>
+          <div class="task-detail">Chemical spray</div>
+        </div>
+      </li>
+      <li>
+        <span class="task-icon">🗑️</span>
+        <div class="task-info">
+          <div class="task-name">Empty all bins</div>
+          <div class="task-detail">Take out when full — don't leave overflowing</div>
+        </div>
+      </li>
+      <li>
+        <span class="task-icon">🍳</span>
+        <div class="task-info">
+          <div class="task-name">Kitchen</div>
+          <div class="task-detail">Shelves, door, handles — quick spray & wipe</div>
+        </div>
+      </li>
+      <li>
+        <span class="task-icon">👟</span>
+        <div class="task-info">
+          <div class="task-name">Shoe area</div>
+          <div class="task-detail">Organise + clean</div>
+        </div>
+      </li>
+    </ul>
+  </div>
 
-        // Add change listeners
-        document.querySelectorAll('.week-row').forEach(row => {
-            const sel = row.querySelector('.week-day select');
-            sel.addEventListener('change', () => {
-                saveDay(row.dataset.week, row.dataset.person, sel.value);
-            });
-        });
+  <!-- RULES -->
+  <div class="card">
+    <h2><span class="emoji">📋</span> House Rules</h2>
+    <ul class="checklist" id="rules">
+      <li onclick="toggleCheck(this)">
+        <div class="checkbox"></div>
+        <span class="rule-text">All tasks done by end of the day on your scheduled day</span>
+      </li>
+      <li onclick="toggleCheck(this)">
+        <div class="checkbox"></div>
+        <span class="rule-text">Can't do your day? Swap with someone or notify the group before your day</span>
+      </li>
+      <li onclick="toggleCheck(this)">
+        <div class="checkbox"></div>
+        <span class="rule-text">Vacuum battery must be put on charge after every use</span>
+      </li>
+      <li onclick="toggleCheck(this)">
+        <div class="checkbox"></div>
+        <span class="rule-text">If no notice given → next week's tasks double up on your next turn</span>
+      </li>
+    </ul>
+  </div>
 
-        // Load on page load
-        loadRoster();
-        updateLocks();
-    </script>
+  <!-- AABI'S TASKS -->
+  <div class="aab-section">
+    <h2><span class="emoji">🧑‍🌾</span> Aabi's Responsibilities</h2>
+    <p style="font-size:0.85em; color:#555; margin-bottom:12px;">Not in the rotation — handles these separately</p>
+    <ul class="task-list">
+      <li>
+        <span class="task-icon">✂️</span>
+        <div class="task-info">
+          <div class="task-name">Grass cutting</div>
+          <div class="task-detail">Outside areas — as needed</div>
+        </div>
+      </li>
+      <li>
+        <span class="task-icon">💨</span>
+        <div class="task-info">
+          <div class="task-name">Exhaust fan cleaning</div>
+          <div class="task-detail">Monthly</div>
+        </div>
+      </li>
+      <li>
+        <span class="task-icon">🏠</span>
+        <div class="task-info">
+          <div class="task-name">Home organisation</div>
+          <div class="task-detail">Ongoing</div>
+        </div>
+      </li>
+      <li>
+        <span class="task-icon">🧴</span>
+        <div class="task-info">
+          <div class="task-name">Cleaning chemicals</div>
+          <div class="task-detail">Let Aabi know what's needed — bulk buy monthly</div>
+        </div>
+      </li>
+      <li>
+        <span class="task-icon">🧊</span>
+        <div class="task-info">
+          <div class="task-name">Fridge cleaning</div>
+          <div class="task-detail">Monthly</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <p>Created by Aabik · Last updated <span id="last-updated">Jun 9, 2026</span></p>
+  </div>
+
+</div>
+
+<script>
+// ========== ROTATION CONFIG ==========
+// Update this array and startIndex when the roster changes
+const ROTATION = ["Simran", "Deepawali", "Bijay"];
+const START_DATE = "2026-06-09"; // Monday of the first rotation week
+const START_INDEX = 0; // Who starts: 0=Simran, 1=Deepawali, 2=Bijay
+
+// ========== DO NOT TOUCH BELOW ==========
+function getWeekInfo() {
+  const now = new Date();
+  const start = new Date(START_DATE + "T00:00:00");
+  const diffDays = Math.floor((now - start) / (1000 * 60 * 60 * 24));
+  const weeksSinceStart = Math.floor(diffDays / 7);
+  const currentIndex = (START_INDEX + weeksSinceStart) % ROTATION.length;
+  const dayOfWeek = now.getDay(); // 0=Sun, 1=Mon...
+  const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+  const thisMonday = new Date(now);
+  thisMonday.setDate(now.getDate() + mondayOffset);
+  const thisSunday = new Date(thisMonday);
+  thisSunday.setDate(thisMonday.getDate() + 6);
+  const nextMonday = new Date(thisSunday);
+  nextMonday.setDate(thisSunday.getDate() + 1);
+  const nextSunday = new Date(nextMonday);
+  nextSunday.setDate(nextMonday.getDate() + 6);
+  const weekAfterMonday = new Date(nextSunday);
+  weekAfterMonday.setDate(nextSunday.getDate() + 1);
+  const weekAfterSunday = new Date(weekAfterMonday);
+  weekAfterSunday.setDate(weekAfterMonday.getDate() + 6);
+
+  function fmt(d) { return d.toLocaleDateString('en-AU', { day: 'numeric', month: 'short' }); }
+  function fmtFull(d) { return d.toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' }); }
+
+  const next1Index = (currentIndex + 1) % ROTATION.length;
+  const next2Index = (currentIndex + 2) % ROTATION.length;
+
+  return {
+    current: ROTATION[currentIndex],
+    currentDates: `${fmt(thisMonday)} – ${fmt(thisSunday)}, ${thisSunday.getFullYear()}`,
+    currentWeek: `Week ${currentIndex + 1} of ${ROTATION.length}`,
+    next1: ROTATION[next1Index],
+    next1Dates: `${fmt(nextMonday)} – ${fmt(nextSunday)}`,
+    next2: ROTATION[next2Index],
+    next2Dates: `${fmt(weekAfterMonday)} – ${fmt(weekAfterSunday)}`,
+    currentIndex: currentIndex
+  };
+}
+
+function updatePage() {
+  const info = getWeekInfo();
+  document.getElementById('current-name').textContent = info.current;
+  document.getElementById('current-week').textContent = info.currentWeek;
+  document.getElementById('current-dates').textContent = info.currentDates;
+  document.getElementById('next1-name').textContent = info.next1;
+  document.getElementById('next1-dates').textContent = info.next1Dates;
+  document.getElementById('next2-name').textContent = info.next2;
+  document.getElementById('next2-dates').textContent = info.next2Dates;
+
+  // Update rotation bar highlight
+  for (let i = 0; i < ROTATION.length; i++) {
+    const el = document.getElementById(`rot-${i}`);
+    if (el) {
+      el.classList.toggle('active', i === info.currentIndex);
+    }
+  }
+}
+
+function toggleCheck(el) { el.classList.toggle('checked'); }
+
+// Run on load
+updatePage();
+</script>
+
 </body>
 </html>
