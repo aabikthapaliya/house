@@ -13,14 +13,12 @@
   .header h1 { font-size: 1.6em; margin-bottom: 6px; }
   .header p { opacity: 0.9; font-size: 0.95em; }
 
-  /* WHO'S ON NOW */
   .now-card { background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: white; border-radius: 12px; margin: 16px 0; padding: 24px; text-align: center; box-shadow: 0 4px 15px rgba(238,90,36,0.3); }
   .now-card .label { font-size: 0.85em; text-transform: uppercase; letter-spacing: 2px; opacity: 0.9; margin-bottom: 8px; }
   .now-card .name { font-size: 2em; font-weight: 800; }
   .now-card .week { font-size: 0.9em; opacity: 0.85; margin-top: 6px; }
   .now-card .dates { font-size: 0.8em; opacity: 0.7; margin-top: 4px; }
 
-  /* UPCOMING */
   .upcoming { display: flex; gap: 12px; margin: 16px 0; }
   .upcoming-card { flex: 1; background: white; border-radius: 12px; padding: 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
   .upcoming-card .week-label { font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-bottom: 6px; }
@@ -31,8 +29,8 @@
   .card h2 { font-size: 1.15em; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
   .card h2 .emoji { font-size: 1.3em; }
 
-  .rotation { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 16px 0; flex-wrap: wrap; }
-  .person { background: #f0f2f5; border-radius: 50px; padding: 10px 20px; font-weight: 600; font-size: 0.95em; }
+  .rotation { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 0; flex-wrap: wrap; }
+  .person { background: #f0f2f5; border-radius: 50px; padding: 10px 16px; font-weight: 600; font-size: 0.9em; }
   .person.active { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
   .arrow { font-size: 1.3em; color: #999; }
 
@@ -69,43 +67,41 @@
     <p>Cleaning Roster & Policy</p>
   </div>
 
-  <!-- WHO'S ON NOW -->
   <div class="now-card">
     <div class="label">🔥 On Duty This Week</div>
     <div class="name" id="current-name">Simran</div>
-    <div class="week" id="current-week">Week 1 of 3</div>
+    <div class="week" id="current-week">Week 1 of 4</div>
     <div class="dates" id="current-dates">Jun 9 – Jun 15, 2026</div>
   </div>
 
-  <!-- UPCOMING -->
   <div class="upcoming">
     <div class="upcoming-card">
       <div class="week-label">Next Week</div>
-      <div class="name" id="next1-name">Deepawali</div>
+      <div class="name" id="next1-name">Bijay</div>
       <div class="dates" id="next1-dates">Jun 16 – Jun 22</div>
     </div>
     <div class="upcoming-card">
       <div class="week-label">Week After</div>
-      <div class="name" id="next2-name">Bijay</div>
+      <div class="name" id="next2-name">Aabik</div>
       <div class="dates" id="next2-dates">Jun 23 – Jun 29</div>
     </div>
   </div>
 
-  <!-- ROTATION -->
   <div class="card">
     <h2><span class="emoji">👥</span> Rotation Order</h2>
     <div class="rotation" id="rotation-bar">
       <div class="person active" id="rot-0">🧑 Simran</div>
       <span class="arrow">→</span>
-      <div class="person" id="rot-1">👩 Deepawali</div>
+      <div class="person" id="rot-1">🧑 Bijay</div>
       <span class="arrow">→</span>
-      <div class="person" id="rot-2">🧑 Bijay</div>
+      <div class="person" id="rot-2">🧑 Aabik</div>
+      <span class="arrow">→</span>
+      <div class="person" id="rot-3">👩 Deepawali</div>
       <span class="arrow">↻</span>
     </div>
-    <p style="text-align:center; font-size:0.85em; color:#666;">One person per week · Aabi handles outside stuff separately</p>
+    <p style="text-align:center; font-size:0.85em; color:#666;">One person per week · 4-week cycle</p>
   </div>
 
-  <!-- MAIN CLEAN -->
   <div class="card">
     <h2><span class="emoji">🧹</span> Main Clean Tasks <span class="badge">~1 hour</span></h2>
     <ul class="task-list">
@@ -175,7 +171,6 @@
     </ul>
   </div>
 
-  <!-- RULES -->
   <div class="card">
     <h2><span class="emoji">📋</span> House Rules</h2>
     <ul class="checklist" id="rules">
@@ -198,16 +193,15 @@
     </ul>
   </div>
 
-  <!-- AABI'S TASKS -->
   <div class="aab-section">
-    <h2><span class="emoji">🧑‍🌾</span> Aabi's Responsibilities</h2>
-    <p style="font-size:0.85em; color:#555; margin-bottom:12px;">Not in the rotation — handles these separately</p>
+    <h2><span class="emoji">🧑‍🌾</span> Aabik's Extra Tasks</h2>
+    <p style="font-size:0.85em; color:#555; margin-bottom:12px;">Done during Aabik's rotation week (in addition to main clean)</p>
     <ul class="task-list">
       <li>
         <span class="task-icon">✂️</span>
         <div class="task-info">
           <div class="task-name">Grass cutting</div>
-          <div class="task-detail">Outside areas — as needed</div>
+          <div class="task-detail">Outside areas</div>
         </div>
       </li>
       <li>
@@ -248,20 +242,17 @@
 </div>
 
 <script>
-// ========== ROTATION CONFIG ==========
-// Update this array and startIndex when the roster changes
-const ROTATION = ["Simran", "Deepawali", "Bijay"];
-const START_DATE = "2026-06-09"; // Monday of the first rotation week
-const START_INDEX = 0; // Who starts: 0=Simran, 1=Deepawali, 2=Bijay
+const ROTATION = ["Simran", "Bijay", "Aabik", "Deepawali"];
+const START_DATE = "2026-06-09";
+const START_INDEX = 0;
 
-// ========== DO NOT TOUCH BELOW ==========
 function getWeekInfo() {
   const now = new Date();
   const start = new Date(START_DATE + "T00:00:00");
   const diffDays = Math.floor((now - start) / (1000 * 60 * 60 * 24));
   const weeksSinceStart = Math.floor(diffDays / 7);
-  const currentIndex = (START_INDEX + weeksSinceStart) % ROTATION.length;
-  const dayOfWeek = now.getDay(); // 0=Sun, 1=Mon...
+  const currentIndex = ((weeksSinceStart % ROTATION.length) + ROTATION.length) % ROTATION.length;
+  const dayOfWeek = now.getDay();
   const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
   const thisMonday = new Date(now);
   thisMonday.setDate(now.getDate() + mondayOffset);
@@ -277,19 +268,18 @@ function getWeekInfo() {
   weekAfterSunday.setDate(weekAfterMonday.getDate() + 6);
 
   function fmt(d) { return d.toLocaleDateString('en-AU', { day: 'numeric', month: 'short' }); }
-  function fmtFull(d) { return d.toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' }); }
 
   const next1Index = (currentIndex + 1) % ROTATION.length;
   const next2Index = (currentIndex + 2) % ROTATION.length;
 
   return {
     current: ROTATION[currentIndex],
-    currentDates: `${fmt(thisMonday)} – ${fmt(thisSunday)}, ${thisSunday.getFullYear()}`,
-    currentWeek: `Week ${currentIndex + 1} of ${ROTATION.length}`,
+    currentDates: fmt(thisMonday) + " – " + fmt(thisSunday) + ", " + thisSunday.getFullYear(),
+    currentWeek: "Week " + (currentIndex + 1) + " of " + ROTATION.length,
     next1: ROTATION[next1Index],
-    next1Dates: `${fmt(nextMonday)} – ${fmt(nextSunday)}`,
+    next1Dates: fmt(nextMonday) + " – " + fmt(nextSunday),
     next2: ROTATION[next2Index],
-    next2Dates: `${fmt(weekAfterMonday)} – ${fmt(weekAfterSunday)}`,
+    next2Dates: fmt(weekAfterMonday) + " – " + fmt(weekAfterSunday),
     currentIndex: currentIndex
   };
 }
@@ -303,19 +293,13 @@ function updatePage() {
   document.getElementById('next1-dates').textContent = info.next1Dates;
   document.getElementById('next2-name').textContent = info.next2;
   document.getElementById('next2-dates').textContent = info.next2Dates;
-
-  // Update rotation bar highlight
   for (let i = 0; i < ROTATION.length; i++) {
-    const el = document.getElementById(`rot-${i}`);
-    if (el) {
-      el.classList.toggle('active', i === info.currentIndex);
-    }
+    const el = document.getElementById('rot-' + i);
+    if (el) el.classList.toggle('active', i === info.currentIndex);
   }
 }
 
 function toggleCheck(el) { el.classList.toggle('checked'); }
-
-// Run on load
 updatePage();
 </script>
 
